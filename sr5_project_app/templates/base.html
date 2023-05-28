@@ -1,0 +1,38 @@
+{% load static %}
+{% load django_browser_reload %}
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Master Heng">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>{% block title %}My amazing site{% endblock %}</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-green-50">
+    <main class="h-screen w-screen flex">
+
+      {% if messages %}
+        {% for msg in messages %}
+        <p class="absolute top-0 w-full flex justify-center items-center h-32  bg-green-500/5">{{msg}}</p>
+        {% endfor %}
+      
+      {% endif %}
+
+        <div id="sidebar" >
+            {% block sidebar %}
+            
+            {% endblock %}
+        </div>
+        <div id="content" class="w-full">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </main>
+    {% django_browser_reload_script %}
+  </body>
+</html>
